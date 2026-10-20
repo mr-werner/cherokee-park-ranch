@@ -1,0 +1,378 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;0,9..144,800;1,9..144,500;1,9..144,700&family=Karla:wght@400;500;700&family=Rye&display=swap");
+
+/* Palette: copper + rust from the Cherokee Park Ranch logo, gold (#cbaa5c) and cream (#f7f5e7) from their site,
+   deepened with a saddle-leather brown and a pine green for contrast. */
+:root {
+  --copper: #9b522a;
+  --copper-hover: #833f1b;
+  --rust: #732b11;
+  --gold: #cbaa5c;
+  --gold-soft: #e2cd94;
+  --cream: #f7f5e7;
+  --paper: #fbf9f1;
+  --saddle: #2b1a12;
+  --saddle-2: #3a2418;
+  --pine: #2f3d2e;
+  --ink: #2a1f18;
+  --muted: #6b5c50;
+  --line: rgba(42, 31, 24, .16);
+
+  --head: "Fraunces", Georgia, serif;
+  --body: "Karla", system-ui, sans-serif;
+  --stamp: "Rye", Georgia, serif;
+
+  /* concept widget variables */
+  --deep: var(--saddle);
+  --deep-line: rgba(203, 170, 92, .3);
+  --accent: var(--copper);
+  --accent-soft: var(--gold);
+  --accent-hover: var(--copper-hover);
+  --accent-ink: #fff;
+  --on-dark: #e8dccb;
+  --faint: #a08c78;
+  --line-light: rgba(255, 255, 255, .14);
+  --steel: var(--saddle);
+  --label: var(--muted);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 17px/1.65 var(--body); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; }
+h1, h2, h3, h4 { font-family: var(--head); font-weight: 700; line-height: 1.05; margin: 0; letter-spacing: -.02em; }
+h2 { font-size: clamp(36px, 5vw, 64px); }
+h2 em, h1 em { font-style: italic; font-weight: 500; color: var(--copper); }
+p { margin: 0 0 1em; }
+.wrap { width: min(1220px, 100% - 40px); margin: 0 auto; }
+.eyebrow { font: 700 12px/1 var(--body); letter-spacing: .22em; text-transform: uppercase; color: var(--copper); margin-bottom: 18px; display: flex; align-items: center; gap: 12px; }
+.eyebrow::before { content: ""; width: 28px; height: 2px; background: currentColor; }
+.eyebrow.light { color: var(--gold); }
+.center { text-align: center; }
+.section-head { max-width: 760px; margin-bottom: 48px; }
+.section-head.center { margin-inline: auto; }
+.section-head.center .eyebrow { justify-content: center; }
+.section-head h2 { margin-bottom: 18px; }
+.section-head p { color: var(--muted); font-size: 18px; }
+.fine { font-size: 14px; color: var(--muted); }
+.fine a { color: var(--copper); text-decoration: underline; text-underline-offset: 3px; display: inline-flex; align-items: center; gap: 3px; }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 54px; padding: 0 26px; font-weight: 700; font-size: 15px; letter-spacing: .02em; border: 2px solid transparent; transition: background .2s, color .2s, border-color .2s; white-space: nowrap; }
+.btn-sm { min-height: 42px; padding: 0 18px; font-size: 14px; }
+.btn-copper { background: var(--copper); color: #fff; }
+.btn-copper:hover { background: var(--copper-hover); }
+.btn-ghost { border-color: rgba(255, 255, 255, .55); color: #fff; }
+.btn-ghost:hover { background: rgba(255, 255, 255, .12); }
+.btn-outline { border-color: var(--ink); color: var(--ink); }
+.btn-outline:hover { background: var(--ink); color: var(--paper); }
+
+/* ---------------------------------------------------------------- River motif */
+.river { display: block; width: 100%; height: 60px; }
+.river path { fill: none; stroke: var(--gold); stroke-width: 2.5; }
+.river .river-thin { stroke-width: 1; opacity: .6; }
+
+/* ---------------------------------------------------------------- Header */
+.award-bar { background: var(--rust); color: var(--cream); text-align: center; font-size: 13px; font-weight: 500; letter-spacing: .04em; padding: 9px 16px; }
+.award-star { color: var(--gold); margin-right: 4px; }
+.header { position: sticky; top: 0; z-index: 50; background: rgba(251, 249, 241, .9); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); transition: box-shadow .2s; }
+.header.is-scrolled { box-shadow: 0 8px 30px rgba(43, 26, 18, .1); }
+.header-row { display: flex; align-items: center; justify-content: space-between; gap: 18px; height: 82px; }
+.brand img { height: 62px; width: auto; }
+.nav { display: flex; gap: 26px; font-weight: 500; font-size: 15px; }
+.nav a { position: relative; padding: 6px 0; }
+.nav a::after { content: ""; position: absolute; left: 0; right: 100%; bottom: 0; height: 2px; background: var(--copper); transition: right .2s; }
+.nav a:hover::after { right: 0; }
+.nav-phone-mobile { display: none !important; }
+.header-cta { display: flex; align-items: center; gap: 16px; }
+.header-phone { display: inline-flex; align-items: center; gap: 7px; font-weight: 700; font-size: 15px; color: var(--rust); white-space: nowrap; }
+.menu-btn { display: none; background: none; border: 0; color: var(--ink); padding: 6px; }
+
+/* ---------------------------------------------------------------- Hero */
+.hero { position: relative; min-height: min(86vh, 820px); display: flex; align-items: flex-end; color: #fff; overflow: hidden; background: var(--saddle); }
+.hero-photo { position: absolute; inset: 0; }
+.hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 60%; }
+.hero-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(30, 17, 10, .82) 0%, rgba(30, 17, 10, .5) 45%, rgba(30, 17, 10, .1) 75%), linear-gradient(0deg, rgba(30, 17, 10, .6), transparent 50%); }
+.hero-grid { position: relative; display: grid; grid-template-columns: 1.25fr .75fr; gap: 50px; align-items: end; padding: 120px 0 70px; }
+.hero h1 { font-size: clamp(52px, 7.6vw, 108px); line-height: .95; letter-spacing: -.035em; margin-bottom: 24px; }
+.hero h1 em { color: var(--gold); }
+.hero-lede { font-size: 19px; max-width: 560px; color: #f1e8dc; }
+.hero-lede span { display: block; margin-top: 10px; font-family: var(--head); font-style: italic; color: var(--gold-soft); font-size: 21px; }
+.hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 30px; }
+
+/* Ticket motif: the 1886 stagecoach fare card */
+.ticket { position: relative; background: var(--cream); color: var(--ink); border: 1px solid rgba(115, 43, 17, .25); box-shadow: 0 30px 60px rgba(0, 0, 0, .28); --notch: 14px;
+  -webkit-mask: radial-gradient(circle var(--notch) at 0 calc(100% - 64px), transparent 98%, #000) , radial-gradient(circle var(--notch) at 100% calc(100% - 64px), transparent 98%, #000);
+  -webkit-mask-composite: source-in; mask-composite: intersect;
+  mask: radial-gradient(circle var(--notch) at 0 calc(100% - 64px), transparent 98%, #000), radial-gradient(circle var(--notch) at 100% calc(100% - 64px), transparent 98%, #000); }
+.ticket-head { background: var(--rust); color: var(--cream); padding: 18px 24px 16px; border-bottom: 3px double var(--gold); }
+.ticket-head span { display: block; font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--gold-soft); font-weight: 700; }
+.ticket-head strong { font-family: var(--stamp); font-weight: 400; font-size: 30px; line-height: 1.15; letter-spacing: .01em; }
+.ticket-body { padding: 20px 24px 22px; }
+.ticket-line { display: flex; justify-content: space-between; gap: 12px; padding: 9px 0; border-bottom: 1px dashed rgba(42, 31, 24, .25); font-size: 15px; }
+.ticket-line span { color: var(--muted); }
+.ticket-price { display: grid; text-align: center; margin-top: 16px; font-size: 13px; color: var(--muted); }
+.ticket-price strong { font-family: var(--stamp); font-weight: 400; font-size: 46px; color: var(--copper); line-height: 1.1; }
+.ticket-stub { height: 64px; display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 0 24px; border-top: 2px dashed rgba(115, 43, 17, .35); font-size: 13px; color: var(--muted); }
+.ticket-stub a { display: inline-flex; align-items: center; gap: 5px; font-weight: 700; color: var(--copper); white-space: nowrap; }
+
+/* ---------------------------------------------------------------- Stats */
+.stats { background: var(--saddle); color: var(--cream); padding: 46px 0 0; }
+.stats-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 28px; }
+.stat strong { display: block; font-family: var(--stamp); font-weight: 400; font-size: clamp(32px, 3.4vw, 46px); color: var(--gold); line-height: 1.1; margin-bottom: 8px; }
+.stat span { font-size: 14px; color: #d9cbb8; line-height: 1.5; display: block; }
+.river-stats { margin-top: 26px; height: 46px; }
+
+/* ---------------------------------------------------------------- Week */
+.week { padding: 110px 0; }
+.week-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: start; }
+.week-intro h2 { margin-bottom: 22px; }
+.week-intro > p { color: var(--muted); font-size: 18px; }
+.week-photo { margin: 34px 0 0; }
+.week-photo img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
+.week-photo figcaption { font-size: 14px; color: var(--muted); margin-top: 12px; padding-left: 14px; border-left: 3px solid var(--gold); }
+.timetable { background: #fff; border: 1px solid var(--line); box-shadow: 0 30px 60px rgba(43, 26, 18, .08); }
+.timetable-head { padding: 26px 30px; background: var(--pine); color: var(--cream); display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; }
+.timetable-head span { font-family: var(--stamp); font-size: 15px; color: var(--gold); }
+.timetable-head strong { font-family: var(--head); font-size: 26px; }
+.timetable ol { list-style: none; margin: 0; padding: 10px 30px 20px; }
+.timetable li { display: grid; grid-template-columns: 92px 1fr; gap: 18px; padding: 16px 0; border-bottom: 1px dashed var(--line); }
+.timetable li:last-child { border-bottom: 0; }
+.timetable time { font-family: var(--stamp); font-size: 24px; color: var(--copper); line-height: 1.1; }
+.timetable time small { font-family: var(--body); font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; margin-left: 4px; color: var(--muted); }
+.timetable h3 { font-size: 20px; margin-bottom: 4px; }
+.timetable p { margin: 0; font-size: 15px; color: var(--muted); }
+
+/* ---------------------------------------------------------------- Riding */
+.riding { background: var(--saddle); color: var(--cream); padding-bottom: 100px; position: relative; overflow: hidden; }
+.riding-photos { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 6px; height: 420px; }
+.riding-photos img { width: 100%; height: 100%; object-fit: cover; }
+.riding-head { max-width: 780px; margin: -90px 0 50px -40px; position: relative; background: var(--saddle); padding: 40px 44px 10px 40px; }
+.riding-head h2 { margin-bottom: 20px; color: #fff; }
+.riding-head h2 em { color: var(--gold); }
+.riding-head p { color: #d9cbb8; font-size: 18px; }
+.ride-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(203, 170, 92, .25); border: 1px solid rgba(203, 170, 92, .25); }
+.ride-card { background: var(--saddle); padding: 30px 28px; }
+.ride-num { font-family: var(--stamp); color: var(--gold); font-size: 22px; }
+.ride-card h3 { font-size: 23px; margin: 10px 0 10px; color: #fff; }
+.ride-card p { margin: 0; color: #d0c0ab; font-size: 15.5px; }
+.riding-note { display: flex; gap: 12px; align-items: flex-start; margin-top: 30px; color: #c9b8a2; font-size: 14px; }
+.hs-inline { width: 26px; height: 26px; flex: 0 0 26px; color: var(--gold); --paper: var(--saddle); }
+
+/* ---------------------------------------------------------------- Rates */
+.rates { padding: 110px 0; background: var(--cream); }
+.season-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; align-items: stretch; }
+.season { display: flex; flex-direction: column; box-shadow: 0 20px 40px rgba(43, 26, 18, .1); background: #fff; }
+.season .ticket-body { flex: 1; }
+.season-late .ticket-head { background: var(--pine); }
+.season-getaway .ticket-head { background: var(--copper); }
+.season-dates { font-family: var(--head); font-size: 22px; font-weight: 700; margin-bottom: 8px; }
+.season-who { color: var(--muted); font-size: 15px; }
+.season-prices { list-style: none; padding: 0; margin: 18px 0 0; }
+.season-prices li { display: flex; justify-content: space-between; align-items: baseline; padding: 10px 0; border-top: 1px dashed rgba(42, 31, 24, .25); }
+.season-prices b { font-family: var(--stamp); font-weight: 400; font-size: 28px; color: var(--copper); }
+.season .ticket-stub { justify-content: center; }
+.rates-lower { display: grid; grid-template-columns: 1.1fr .9fr; gap: 60px; margin-top: 70px; }
+.rates-lower h3 { font-size: 28px; margin-bottom: 20px; }
+.included ul { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 12px 22px; }
+.included li { display: flex; gap: 10px; align-items: flex-start; font-size: 16px; }
+.included svg { color: var(--copper); flex: 0 0 16px; margin-top: 5px; }
+.policy ul { padding-left: 20px; margin: 0 0 24px; }
+.policy li { margin-bottom: 8px; }
+.policy li::marker { color: var(--copper); }
+.policy-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
+
+/* ---------------------------------------------------------------- Lodging */
+.lodging { padding: 0 0 110px; background: var(--paper); }
+.river-top { margin-bottom: 70px; background: var(--cream); }
+.river-top path { stroke: var(--copper); }
+.lodging-head { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: end; margin-bottom: 50px; }
+.lodging-head p { color: var(--muted); font-size: 17px; margin: 0; }
+.lodging-grid { display: grid; grid-template-columns: .95fr 1.05fr; gap: 50px; align-items: start; }
+.lodging-feature { position: relative; margin: 0 0 60px; }
+.lodging-feature > img:first-child { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+.lodging-inset { position: absolute; right: -24px; bottom: -50px; width: 52%; aspect-ratio: 4 / 3; object-fit: cover; border: 8px solid var(--paper); }
+.cabin-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 0 28px; }
+.cabin-list li { display: grid; grid-template-columns: 42px 1fr; gap: 14px; padding: 18px 0; border-bottom: 1px solid var(--line); }
+.cabin-list li.is-lodge { grid-column: 1 / -1; background: var(--cream); padding: 22px; border: 1px solid rgba(155, 82, 42, .3); margin-bottom: 6px; }
+.pin { width: 42px; height: 42px; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); background: var(--copper); display: grid; place-items: center; color: #fff; font-family: var(--stamp); font-size: 17px; }
+.pin > span { transform: rotate(45deg); line-height: 1; }
+.cabin-list h3 { font-size: 21px; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; margin-bottom: 4px; }
+.cabin-list h3 small { font-family: var(--body); font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--copper); }
+.cabin-list p { margin: 0; font-size: 15px; color: var(--muted); }
+.map-details { margin-top: 40px; border: 1px solid var(--line); background: #fff; }
+.map-details summary { cursor: pointer; padding: 18px 22px; font-weight: 700; display: flex; align-items: center; gap: 8px; color: var(--rust); }
+.map-details img { width: 100%; }
+
+/* ---------------------------------------------------------------- Activities */
+.ranch { padding: 110px 0; background: #fff; }
+.tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 30px; border-bottom: 2px solid var(--line); }
+.tabs button { background: none; border: 0; padding: 14px 20px; font-weight: 700; font-size: 15px; color: var(--muted); border-bottom: 3px solid transparent; margin-bottom: -2px; }
+.tabs button.is-active { color: var(--rust); border-bottom-color: var(--copper); }
+.ranch-panel { display: grid; grid-template-columns: 1fr 1.1fr; gap: 50px; align-items: start; }
+.ranch-panel > img { width: 100%; aspect-ratio: 5 / 4; object-fit: cover; }
+.ranch-items { display: grid; grid-template-columns: 1fr 1fr; gap: 30px 34px; }
+.ranch-item h3 { font-size: 22px; margin-bottom: 8px; padding-top: 14px; border-top: 2px solid var(--gold); }
+.ranch-item p { margin: 0; font-size: 15.5px; color: var(--muted); }
+
+/* ---------------------------------------------------------------- Dining */
+.dining { padding: 110px 0; background: var(--cream); }
+.dining-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center; }
+.dining-photos { position: relative; padding-bottom: 70px; }
+.dining-photos img:first-child { width: 88%; aspect-ratio: 4 / 3; object-fit: cover; }
+.dining-photos img:last-child { position: absolute; right: 0; bottom: 0; width: 42%; aspect-ratio: 1; object-fit: cover; border: 8px solid var(--cream); }
+.dining h2 { margin-bottom: 30px; }
+.menu { margin: 0; }
+.menu div { display: grid; grid-template-columns: 170px 1fr; gap: 18px; padding: 14px 0; border-bottom: 1px dotted rgba(42, 31, 24, .35); }
+.menu dt { font-family: var(--head); font-weight: 700; font-size: 19px; color: var(--rust); }
+.menu dd { margin: 0; font-size: 15.5px; color: var(--muted); }
+
+/* ---------------------------------------------------------------- Family */
+.family { padding: 110px 0; background: var(--pine); color: var(--cream); }
+.family-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 70px; align-items: center; }
+.family-photo { position: relative; }
+.family-photo img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+.family-stamp { position: absolute; right: -26px; top: 30px; width: 116px; height: 116px; border-radius: 50%; background: var(--rust); border: 3px double var(--gold); display: grid; place-content: center; text-align: center; font-family: var(--stamp); font-size: 15px; color: var(--gold-soft); transform: rotate(-10deg); }
+.family-stamp b { display: block; font-weight: 400; font-size: 30px; color: #fff; }
+.family h2 { color: #fff; margin-bottom: 26px; }
+.family h2 em { color: var(--gold); }
+.family-copy p { color: #dcd3c2; }
+.timeline { list-style: none; padding: 0; margin: 30px 0 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 2px solid var(--gold); }
+.timeline li { padding: 16px 14px 0 0; font-size: 14px; color: #d0c6b4; position: relative; }
+.timeline li::before { content: ""; position: absolute; top: -8px; left: 0; width: 14px; height: 14px; border-radius: 50%; background: var(--gold); }
+.timeline b { display: block; font-family: var(--stamp); font-weight: 400; font-size: 24px; color: #fff; }
+
+/* ---------------------------------------------------------------- Awards */
+.awards { padding: 100px 0 80px; background: var(--paper); }
+.award-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-bottom: 28px; }
+.award { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 14px; padding: 26px 18px; background: #fff; border: 1px solid var(--line); min-height: 220px; transition: transform .2s, box-shadow .2s; }
+a.award:hover { transform: translateY(-3px); box-shadow: 0 16px 30px rgba(43, 26, 18, .1); }
+.award img { max-height: 110px; max-width: 150px; width: auto; object-fit: contain; }
+.award span { font-size: 14px; font-weight: 700; line-height: 1.35; }
+.award em { font-style: normal; font-weight: 400; color: var(--muted); font-size: 13px; }
+.award-ribbon { width: 112px; height: 112px; border-radius: 50%; background: var(--rust); border: 4px double var(--gold); color: var(--gold-soft); display: grid; place-content: center; line-height: 1.1; }
+.award-ribbon small { font-size: 9px; letter-spacing: .1em; text-transform: uppercase; font-weight: 700; }
+.award-ribbon strong { font-family: var(--stamp); font-weight: 400; font-size: 40px; color: #fff; }
+
+/* ---------------------------------------------------------------- Reviews */
+.reviews { padding: 110px 0; background: var(--saddle); color: var(--cream); }
+.reviews h2 { color: #fff; }
+.reviews h2 em { color: var(--gold); }
+.reviews .fine { color: #c9b8a2; }
+.reviews .fine a { color: var(--gold); }
+.review-grid { columns: 3 320px; column-gap: 24px; }
+.review { break-inside: avoid; margin: 0 0 24px; background: var(--saddle-2); padding: 30px; border-top: 3px solid var(--copper); }
+.review blockquote { margin: 0 0 18px; font-family: var(--head); font-size: 19px; line-height: 1.5; color: #f3ead9; }
+.review figcaption { display: flex; align-items: center; gap: 8px; font-size: 14px; color: #c9b8a2; }
+.review figcaption b { color: var(--gold); }
+.hs-cap { width: 20px; height: 20px; color: var(--copper); --paper: var(--saddle-2); }
+
+/* ---------------------------------------------------------------- Visit */
+.visit { padding: 110px 0; }
+.visit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+.visit h2 { margin-bottom: 22px; }
+.visit-grid > div > p { color: var(--muted); }
+.details { margin: 26px 0; display: grid; gap: 14px; }
+.details div { display: grid; grid-template-columns: 120px 1fr; gap: 12px; padding-bottom: 14px; border-bottom: 1px solid var(--line); }
+.details dt { display: flex; align-items: center; gap: 8px; font-weight: 700; color: var(--rust); font-size: 14px; }
+.details dd { margin: 0; overflow-wrap: anywhere; }
+.details a { color: var(--copper); font-weight: 700; }
+.visit-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+.paperwork { margin-top: 36px; padding: 24px; background: var(--cream); }
+.paperwork h3 { font-size: 20px; margin-bottom: 12px; }
+.paperwork ul { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 8px 18px; }
+.paperwork a { display: inline-flex; align-items: center; gap: 8px; color: var(--copper); font-weight: 700; font-size: 15px; }
+.map { position: sticky; top: 110px; }
+.map iframe { width: 100%; height: 560px; border: 0; filter: sepia(.25) saturate(.9); }
+
+/* ---------------------------------------------------------------- Footer */
+.footer { background: var(--saddle); color: #d9cbb8; padding-bottom: 120px; }
+.river-footer { background: var(--paper); height: 50px; }
+.river-footer path { stroke: var(--copper); }
+.footer-row { display: grid; grid-template-columns: 260px 1fr; gap: 60px; padding: 60px 0 40px; }
+.footer-logo { width: 220px; }
+.footer-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+.footer-cols div { display: grid; gap: 8px; align-content: start; font-size: 15px; }
+.footer-cols h4 { font-size: 13px; font-family: var(--body); letter-spacing: .18em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+.footer-cols a:hover { color: #fff; }
+.footer-base { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; border-top: 1px solid rgba(255, 255, 255, .12); padding-top: 22px; font-size: 13px; }
+.footer-base a { text-decoration: underline; }
+
+/* ---------------------------------------------------------------- Responsive */
+@media (max-width: 1300px) {
+  .riding-head { margin-left: -20px; padding-left: 20px; }
+}
+@media (max-width: 1120px) {
+  .nav { gap: 18px; font-size: 14px; }
+  .header-phone { display: none; }
+}
+@media (max-width: 980px) {
+  .menu-btn { display: block; }
+  .nav { position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; gap: 0; background: var(--paper); border-bottom: 1px solid var(--line); padding: 8px 20px 20px; display: none; font-size: 17px; }
+  .nav.is-open { display: flex; }
+  .nav a { padding: 13px 0; border-bottom: 1px solid var(--line); }
+  .nav a::after { display: none; }
+  .nav-phone-mobile { display: inline-flex !important; align-items: center; gap: 8px; color: var(--copper); font-weight: 700; }
+  .hero-grid, .week-grid, .rates-lower, .lodging-head, .lodging-grid, .ranch-panel, .dining-grid, .family-grid, .visit-grid { grid-template-columns: 1fr; gap: 44px; }
+  .hero-grid { padding-top: 90px; }
+  .hero-ticket { max-width: 440px; }
+  .stats-row { grid-template-columns: repeat(3, 1fr); }
+  .ride-grid, .season-grid { grid-template-columns: 1fr 1fr; }
+  .award-grid { grid-template-columns: repeat(2, 1fr); }
+  .riding-photos { height: 300px; }
+  .map { position: static; }
+  .map iframe { height: 380px; }
+  .footer-row { grid-template-columns: 1fr; gap: 30px; }
+  .family-photo { max-width: 460px; }
+}
+@media (max-width: 800px) {
+  .stats-row { grid-template-columns: 1fr 1fr; }
+  .season-grid { grid-template-columns: 1fr; max-width: 460px; margin: 0 auto; }
+  .riding-photos { grid-template-columns: 1fr 1fr; height: 240px; }
+  .rp-c { display: none; }
+  .timeline { grid-template-columns: 1fr 1fr; row-gap: 26px; border-top: 0; }
+  .timeline li { border-top: 2px solid var(--gold); }
+}
+@media (max-width: 540px) {
+  body { font-size: 16px; }
+  .wrap { width: calc(100% - 32px); }
+  .award-bar { font-size: 11.5px; padding: 8px 12px; }
+  .header-row { height: 70px; }
+  .brand img { height: 50px; }
+  .header-cta .btn-sm { padding: 0 12px; min-height: 38px; }
+  .hero { min-height: 0; }
+  .hero-grid { padding: 70px 0 40px; gap: 34px; }
+  .hero h1 { font-size: 50px; }
+  .hero-lede { font-size: 17px; }
+  .hero-ctas .btn { width: 100%; }
+  .ticket-head strong { font-size: 25px; }
+  .stats-row { gap: 22px 18px; }
+  .stat:last-child { grid-column: 1 / -1; }
+  .week, .rates, .ranch, .dining, .family, .reviews, .visit { padding: 76px 0; }
+  .timetable-head, .timetable ol { padding-left: 20px; padding-right: 20px; }
+  .timetable li { grid-template-columns: 74px 1fr; gap: 12px; }
+  .timetable time { font-size: 20px; }
+  .riding-head { margin: -50px -16px 40px; padding: 28px 16px 0; }
+  .ride-grid { grid-template-columns: 1fr; }
+  .included ul, .cabin-list, .ranch-items, .paperwork ul { grid-template-columns: 1fr; }
+  .lodging-inset { right: -8px; bottom: -40px; }
+  .tabs button { padding: 12px 12px; font-size: 14px; }
+  .menu div { grid-template-columns: 1fr; gap: 4px; }
+  .family-stamp { right: -6px; width: 96px; height: 96px; }
+  .family-stamp b { font-size: 24px; }
+  .award-grid { gap: 10px; }
+  .award { min-height: 180px; padding: 18px 10px; }
+  .award img { max-height: 84px; max-width: 120px; }
+  .details div { grid-template-columns: 1fr; gap: 4px; }
+  .review { padding: 24px; }
+  .review blockquote { font-size: 17px; }
+  .footer-cols { grid-template-columns: 1fr 1fr; }
+  .river { height: 36px; }
+}
+
+/* Desktop hero: photo sits right of a saddle-leather panel so the rider shows between headline and fare card */
+@media (min-width: 981px) {
+  .hero-photo { left: 30%; }
+  .hero-photo::after { background: linear-gradient(90deg, var(--saddle) 0%, rgba(43, 26, 18, .55) 22%, rgba(43, 26, 18, 0) 48%), linear-gradient(0deg, rgba(30, 17, 10, .55), transparent 45%); }
+  .hero::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 30%; background: var(--saddle) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cpath d='M0 60 Q30 40 60 60 T120 60' fill='none' stroke='%23cbaa5c' stroke-opacity='.08' stroke-width='2'/%3E%3C/svg%3E"); }
+}
